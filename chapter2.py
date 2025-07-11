@@ -2,11 +2,29 @@ import numpy as np
 import pymc as pm
 import arviz as az
 import matplotlib.pyplot as plt
+from scipy.stats import beta
+
+np.random.seed(123)
 
 trials = 4
 theta_real = 0.35
-
 data = np.random.binomial(n=1, p=theta_real, size=trials)
+alpha_prior = 1
+beta_prior = 1
+
+# Coin flip using analytics
+
+data
+success = np.count_nonzero(data == 1)
+alpha_post = alpha_prior+success
+beta_post = beta_prior+trials-success
+
+plt.clf()
+plt.plot(np.linspace(0, 1, 100),
+         beta.pdf(np.linspace(0, 1, 100), alpha_post, beta_post))
+plt.savefig('c2_coin_analytic.png', dpi=100)
+
+# Coin flip using numerical
 
 with pm.Model() as model:
     θ = pm.Beta('θ', alpha=1, beta=1)
@@ -14,4 +32,5 @@ with pm.Model() as model:
     idata = pm.sample(1000)
 
 az.plot_trace(idata)
-plt.savefig('c2_coin_trace.png')
+plt.savefig('c2_coin_trace.png', dpi=100)
+plt.show()
