@@ -31,6 +31,14 @@ with pm.Model() as model:
     y = pm.Bernoulli('y', p=θ, observed=data)
     idata = pm.sample(1000)
 
+
+az.plot_posterior(idata)
+plt.savefig('c2_coin_posterior.png', dpi=100)
 az.plot_trace(idata)
 plt.savefig('c2_coin_trace.png', dpi=100)
+plt.show()
+
+az.summary(idata, kind='stats').round(2)
+
+az.plot_trace(idata, combined=True)
 plt.show()
