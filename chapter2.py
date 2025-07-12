@@ -41,4 +41,11 @@ plt.show()
 az.summary(idata, kind='stats').round(2)
 
 az.plot_trace(idata, combined=True)
+
+az.plot_bf(idata, var_name='θ', prior=np.random.uniform(0,1,10000), ref_val=0.5)
+plt.savefig('c2_coin_savage_dickey', dpi=100)
+
+az.plot_posterior(idata, rope=[0.45, 0.55])
+plt.savefig('c2_coin_rope.png', dpi=100)
+
 plt.show()
