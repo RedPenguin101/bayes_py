@@ -36,3 +36,4 @@ y_lims = axes[0].get_ylim()
 axes[0].vlines(idata_h.posterior['μ_mu'].mean(), *y_lims, color="k", ls=":");
 plt.savefig("c3_shifts_forest.png")
 
+

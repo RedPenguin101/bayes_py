@@ -10,10 +10,10 @@ hierarchical models using hyperpriors.
 ```
         pooled    unpooled    hierarchical
 hyper                              Φ
-                                /  |  \
-prior     θ       θ1 θ2 θ3     θ1  θ2  θ3
-        / | \     |  |  |      |   |   |
-group  y1 y2 y3   y1 y2 y3     y1  y2  ym
+                                 / | \
+prior     θ       θ1 θ2 θ3      θ1 θ2 θ3
+        / | \     |  |  |       |  |   |
+group  y1 y2 y3   y1 y2 y3      y1 y2 ym
 ```
 
 Unpooled is what we used for the tips dataset.
@@ -21,3 +21,4 @@ Unpooled is what we used for the tips dataset.
 To see the impact of this we'll do unpooled and hierarchical models
 for the differences between theoretical and experimental chemical
 shifts (it still doesn't matter what these are)
+
