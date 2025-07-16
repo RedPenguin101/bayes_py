@@ -2,6 +2,7 @@ from scipy.stats import beta
 import matplotlib.pyplot as plt
 import numpy as np
 import pymc as pm
+import arviz as az
 
 np.random.seed(123)
 
@@ -53,4 +54,25 @@ plt.yticks([])
 plt.legend()
 plt.savefig('exercises_2_1_beta_comparison')
 
+plt.show()
+
+with pm.Model() as model_u1:
+    θ = pm.Uniform('θ_u1', 0, 1)
+    y = pm.Bernoulli('y', p=θ, observed=data)
+    idata_u1 = pm.sample()
+
+plt.clf()
+ax = idata_11.posterior.θ_11[0].to_pandas().plot.kde(color='b')
+idata_u1.posterior.θ_u1[0].to_pandas().plot.kde(ax=ax, color='orange')
+plt.legend()
+plt.savefig('exercises_2_1_beta_uniform')
+plt.show()
+
+with pm.Model() as model_u2:
+    θ = pm.Uniform('θ_u2', -1, 2)
+    y = pm.Bernoulli('y', p=θ, observed=data)
+    idata_u2 = pm.sample()
+
+az.plot_trace(idata_u2)
+plt.savefig('exercises_2_1_bad_uniform')
 plt.show()
