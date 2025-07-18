@@ -1,5 +1,7 @@
 # Chapter 2 Exercises
 
+## 1
+
 > Using PyMC, change the parameters of the prior Beta distribution in
 > `our_first_model` to match those of the previous chapter. Compare
 > the results to the previous chapter.
@@ -20,7 +22,9 @@ Posterior plots - including comparison to analytical posterior.
 
 ![](exercises_2_1_beta_comparison.png)
 
-> Compare the model our_first_model with prior 𝜃∼Beta(1,1)with a model
+## 2
+
+> Compare the model `our_first_model` with prior 𝜃∼Beta(1,1)with a model
 > with prior 𝜃∼U(0,1). Are the posteriors similar or different? Is
 > the sampling slower, faster, or the same? What about using a Uniform
 > over a different interval such as [-1, 2]? Does the model run? What
@@ -45,3 +49,9 @@ Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws 
 There were 500 divergences after tuning. Increase `target_accept` or reparameterize.
 ```
 
+## 4
+
+> Read about the coal mining disaster model that is part of the PyMC
+> documentation
+> <https://www.pymc.io/projects/docs/en/stable/learn/core_notebooks/pymc_overview.html#case-study-2-coal-mining-disasters>.
+> Try to implement and run this model by yourself
